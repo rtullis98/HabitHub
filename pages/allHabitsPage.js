@@ -25,7 +25,7 @@ export default function AllHabitsPage() {
           </Button>
         </Link>
       </div>
-      <HabitGrid posts={allHabits} />
+      <HabitGrid habits={allHabits} />
     </div>
   );
 }

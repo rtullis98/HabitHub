@@ -39,11 +39,14 @@ export default function AddHabitForm({ obj }) {
     if (obj.id) {
       const payload = { ...formData, Id: obj.id };
       updateHabit(payload)
-        .then(() => router.push('/'));
+        .then(() => router.push('/'))
+        .catch((error) => {
+          console.error('API Error:', error);
+        });
     } else {
       const payload = { ...formData, UserId: user.id };
       createHabit(payload)
-        .then(router.push('/'))
+        .then(() => router.push('/'))
         .catch((error) => {
           console.error('API Error:', error);
         });
@@ -81,7 +84,7 @@ export default function AddHabitForm({ obj }) {
           <Form.Control
             type="text"
             placeholder="Habit Description"
-            name="content"
+            name="description"
             value={formData.description}
             onChange={handleChange}
             required
@@ -101,6 +104,7 @@ AddHabitForm.propTypes = {
     id: PropTypes.number,
     title: PropTypes.string,
     imageUrl: PropTypes.string,
+    description: PropTypes.string,
     userId: PropTypes.number,
   }),
 };

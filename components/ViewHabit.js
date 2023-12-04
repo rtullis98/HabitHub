@@ -13,7 +13,7 @@ const ViewHabit = ({ habits }) => (
             {habit.imageUrl && <img src={habit.imageUrl} alt="habit" />}
             <h5 className="card-title">{habit.title}</h5>
             <p className="card-text"> {habit.description}</p>
-            <p className="card-text">Tag: {habit.tags}</p>
+            <p className="card-text">Tag: {habit.tag}</p>
           </div>
         </div>
       </div>
@@ -27,11 +27,14 @@ const postShape = PropTypes.shape({
   UserName: PropTypes.string,
   Tags: PropTypes.string,
   imageUrl: PropTypes.string,
-  Content: PropTypes.string,
+  Description: PropTypes.string,
 });
 
 ViewHabit.propTypes = {
-  habits: PropTypes.arrayOf(postShape).isRequired,
+  habits: PropTypes.oneOfType([
+    PropTypes.arrayOf(postShape), // array of habits
+    postShape, // single habit
+  ]).isRequired,
 };
 
 export default ViewHabit;

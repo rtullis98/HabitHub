@@ -24,7 +24,7 @@ const checkUser = (uid) => new Promise((resolve, reject) => {
 });
 
 const registerUser = (payload) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/api/users`, {
+  fetch(`${dbUrl}/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
