@@ -22,17 +22,14 @@ export default function NavBar() {
             <Link passHref href="/">
               <Nav.Link>Home</Nav.Link>
             </Link>
-            <Link passHref href="/allPostsPage">
-              <Nav.Link>All Posts</Nav.Link>
+            <Link passHref href="/allHabitsPage">
+              <Nav.Link>All Habits</Nav.Link>
             </Link>
-            <Link passHref href="/createPostPage">
-              <Nav.Link>Add a Post</Nav.Link>
+            <Link passHref href="/createHabitPage">
+              <Nav.Link>Create a Habit</Nav.Link>
             </Link>
-            <Link passHref href="/myPostsPage">
-              <Nav.Link>My Posts</Nav.Link>
-            </Link>
-            <Link passHref href="/userProfile">
-              <Nav.Link>User Profile</Nav.Link>
+            <Link passHref href="/myHabitsPage">
+              <Nav.Link>My Habits</Nav.Link>
             </Link>
             <Button className="me-5" variant="dark fw-bold ps-3" onClick={signOut}>
               Sign Out
