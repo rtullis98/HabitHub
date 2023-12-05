@@ -73,20 +73,21 @@ const createHabit = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateHabit = (HabId) => new Promise((resolve, reject) => {
+const updateHabit = (HabId, habitData) => new Promise((resolve, reject) => {
   fetch(`${dbUrl}/habits/${HabId}/update`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
-    body: JSON.stringify(HabId),
+    body: JSON.stringify(habitData),
   })
     .then(async (res) => {
-      let data;
       if (res.ok) {
-        data = await res.json();
+        const data = await res.json();
         resolve(data);
+      } else {
+        reject(new Error(`Failed to update habit. Status: ${res.status}`));
       }
     })
     .catch(reject);
