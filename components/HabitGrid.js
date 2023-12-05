@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
-import { deleteHabit } from '../api/habitEndpoints';
+import { deleteHabit, updateHabit } from '../api/habitEndpoints';
 
 const HabitGrid = ({ habits, isAuthenticated, onUpdate }) => {
   const deleteMyHabit = (id) => {
@@ -12,6 +12,9 @@ const HabitGrid = ({ habits, isAuthenticated, onUpdate }) => {
     }
   };
 
+  const editMyHabit = (id) => {
+    updateHabit(id).then(() => onUpdate());
+  };
   return (
     <div className="row">
       {habits.map((habit) => (
@@ -29,11 +32,13 @@ const HabitGrid = ({ habits, isAuthenticated, onUpdate }) => {
                     View
                   </Button>
                 </Link>
+                {isAuthenticated && (
                 <Link passHref href={`/edit/${habit.id}`}>
-                  <Button variant="primary" className="mt-3 btn-sm" style={{ height: '32px' }}>
+                  <Button variant="primary" className="mt-3 btn-sm" style={{ height: '32px' }} onClick={() => editMyHabit(habit.id)}>
                     Edit
                   </Button>
                 </Link>
+                )}
                 {isAuthenticated && (
                   <Link passHref href={`/habit/habitTag/${habit.id}`}>
                     <Button variant="success" className="mt-3 btn-sm" style={{ height: '32px' }}>

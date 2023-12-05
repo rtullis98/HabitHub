@@ -11,7 +11,7 @@ const checkUser = (uid) => new Promise((resolve, reject) => {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
-})
+  })
 
     .then((resp) => {
       if (resp.status === 204) {
