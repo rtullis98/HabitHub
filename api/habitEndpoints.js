@@ -73,8 +73,8 @@ const createHabit = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateHabit = (HabId, payload) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/habits/${HabId}/update`, {
+const updateHabit = (payload) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/habits/${payload.id}/update`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
