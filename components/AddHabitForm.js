@@ -11,6 +11,7 @@ const initialState = {
   title: '',
   description: '',
   imageUrl: '',
+  userId: null,
 };
 
 export default function AddHabitForm({ obj }) {
@@ -21,7 +22,7 @@ export default function AddHabitForm({ obj }) {
 
   useEffect(() => {
     checkUser(user.id).then(setUser);
-    if (obj.id) {
+    if (obj?.id) {
       setFormData(obj);
     }
   }, [user, obj]);
@@ -93,7 +94,7 @@ export default function AddHabitForm({ obj }) {
 
         {/* SUBMIT BUTTON  */}
 
-        <Button type="submit" className="btn-secondary mt-2">{obj.id ? 'Update' : 'Create'} Habit</Button>
+        <Button type="submit" className="btn-secondary mt-2">{obj?.id ? 'Update' : 'Create'} Habit</Button>
       </Form>
     </>
   );
