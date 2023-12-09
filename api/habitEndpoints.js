@@ -112,6 +112,24 @@ const getHabitsByUser = (userId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const singleHabitByUser = (id) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/api/singlehabitbyuser/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  })
+    .then(async (res) => {
+      let data;
+      if (res.ok) {
+        data = await res.json();
+        resolve(data);
+      }
+    })
+    .catch(reject);
+});
+
 const addTagToHabit = (HabId) => new Promise((resolve, reject) => {
   fetch(`${dbUrl}/habits/${HabId}/tags/new`, {
     method: 'POST',
@@ -141,4 +159,5 @@ export {
   addTagToHabit,
   getSingleHabit,
   deleteHabit,
+  singleHabitByUser,
 };

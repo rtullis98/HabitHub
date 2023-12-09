@@ -31,6 +31,9 @@ export default function NavBar() {
             <Link passHref href="/myHabitsPage">
               <Nav.Link>My Habits</Nav.Link>
             </Link>
+            <Link passHref href="/tagManagerPage">
+              <Nav.Link>Tag Manager</Nav.Link>
+            </Link>
             <Link passHref href="/userProfile">
               <Nav.Link>User Profile</Nav.Link>
             </Link>
