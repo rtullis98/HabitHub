@@ -11,7 +11,7 @@ const initialState = {
   title: '',
   description: '',
   imageUrl: '',
-  userId: null,
+  // userId: null,
 };
 
 export default function AddHabitForm({ obj }) {
@@ -45,7 +45,7 @@ export default function AddHabitForm({ obj }) {
           console.error('API Error:', error);
         });
     } else {
-      const payload = { ...formData, UserId: user.id };
+      const payload = { ...formData, userId: user.id };
       createHabit(payload)
         .then(() => router.push('/'))
         .catch((error) => {
