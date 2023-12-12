@@ -1,3 +1,4 @@
+// pages/habit/habitTag/[id].js
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { singleHabitByUser } from '../../../api/habitEndpoints';
@@ -25,9 +26,10 @@ export default function SingleHabitPage() {
       <h2>Add a Tag</h2>
       <div style={{ display: 'flex' }}>
         <div style={{ flex: 2 }}>
-          {Object.keys(habit).length > 0 && (
-            <AddTagToHabit HabId={habit} style={{ width: '100%' }} />
-          )}
+          {/* {Object.keys(habit).length > 0 && (
+            <AddTagToHabit HabId={habit.id} style={{ width: '100%' }} />
+          )} */}
+          <AddTagToHabit HabId={habit} style={{ width: '100%' }} />
         </div>
       </div>
     </div>

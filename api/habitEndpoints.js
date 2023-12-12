@@ -121,29 +121,31 @@ const singleHabitByUser = (id) => new Promise((resolve, reject) => {
     },
   })
     .then(async (res) => {
-      let data;
       if (res.ok) {
-        data = await res.json();
+        const data = await res.json();
         resolve(data);
+      } else {
+        // Reject the promise if the response is not okay
+        reject(new Error(`Failed to fetch habit. Status: ${res.status}`));
       }
     })
     .catch(reject);
 });
 
-const addTagToHabit = (HabId) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/habits/${HabId}/tags/new`, {
+const addTagToHabit = (HabId, tagId) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/api/habit/taghabit/${HabId}/${tagId}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ HabId }),
+    body: JSON.stringify({}),
   })
     .then(async (res) => {
       if (res.ok) {
         const data = await res.json();
         resolve(data);
       } else {
-        reject(new Error(`Failed to add tag to post. Status: ${res.status}`));
+        reject(new Error(`Failed to add tag to habit. Status: ${res.status}`));
       }
     })
     .catch((error) => {

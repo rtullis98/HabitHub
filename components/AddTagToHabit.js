@@ -16,16 +16,33 @@ function AddTagToHabit({ HabId }) {
   const router = useRouter();
 
   useEffect(() => {
+    console.log('Received HabId:', HabId);
     checkUser(user.id).then(setRareUser);
     getAllTags().then((tagsData) => {
+      console.log('Received tagsData:', tagsData);
       setTags(tagsData);
     });
-  }, [user]);
+  }, [user, HabId]);
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (selectedTag) {
+  //     const newHabitId = HabId[0]?.id;
+  //     addTagToHabit(newHabitId, selectedTag)
+  //       .then((data) => {
+  //         console.warn('Tag added to habit:', data);
+  //       })
+  //       .then(router.push('/myHabitsPage'))
+  //       .catch((error) => {
+  //         console.error('Error adding tag to habit:', error);
+  //       });
+  //   }
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (selectedTag) {
-      const newHabitId = HabId[0]?.id;
+    if (selectedTag && HabId && HabId.id) {
+      const newHabitId = HabId.id;
       addTagToHabit(newHabitId, selectedTag)
         .then((data) => {
           console.warn('Tag added to habit:', data);
@@ -51,7 +68,7 @@ function AddTagToHabit({ HabId }) {
             <option value="">Select a Tag</option>
             {tags.map((tag) => (
               <option key={tag.id} value={tag.id}>
-                {tag.label}
+                {tag.name}
               </option>
             ))}
           </Form.Select>
@@ -63,7 +80,7 @@ function AddTagToHabit({ HabId }) {
 }
 
 AddTagToHabit.propTypes = {
-  HabId: PropTypes.number.isRequired,
+  HabId: PropTypes.object.isRequired,
 };
 
 export default AddTagToHabit;
