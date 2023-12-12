@@ -21,7 +21,7 @@ const HabitGrid = ({ habits, isAuthenticated, onUpdate }) => {
               {habit.imageUrl && <img src={habit.imageUrl} alt="habit" />}
               <h5 className="card-title">{habit.title}</h5>
               <p className="card-text"> {habit.description}</p>
-              <p className="card-text">Tag: {habit.tags}</p>
+              <p className="card-text">Tags: {habit.tags ? habit.tags.map((tag) => tag.name).join(', ') : 'No tags'}</p>
 
               <div className="d-flex justify-content-between">
                 <Link passHref href={`/habit/${habit.id}`}>
@@ -56,16 +56,16 @@ const HabitGrid = ({ habits, isAuthenticated, onUpdate }) => {
     </div>
   );
 };
-const postShape = PropTypes.shape({
-  Id: PropTypes.number,
-  Title: PropTypes.string,
-  UserName: PropTypes.string,
-  Tags: PropTypes.string,
-  ImageUrl: PropTypes.string,
+const habitShape = PropTypes.shape({
+  id: PropTypes.number,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  tags: PropTypes.string,
+  imageUrl: PropTypes.string,
 });
 
 HabitGrid.propTypes = {
-  habits: PropTypes.arrayOf(postShape).isRequired,
+  habits: PropTypes.arrayOf(habitShape).isRequired,
   isAuthenticated: PropTypes.bool,
   onUpdate: PropTypes.func,
 };
