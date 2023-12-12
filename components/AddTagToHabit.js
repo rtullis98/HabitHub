@@ -16,10 +16,10 @@ function AddTagToHabit({ HabId }) {
   const router = useRouter();
 
   useEffect(() => {
-    console.log('Received HabId:', HabId);
+    console.warn('Received HabId:', HabId);
     checkUser(user.id).then(setRareUser);
     getAllTags().then((tagsData) => {
-      console.log('Received tagsData:', tagsData);
+      console.warn('Received tagsData:', tagsData);
       setTags(tagsData);
     });
   }, [user, HabId]);

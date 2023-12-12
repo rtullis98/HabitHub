@@ -8,7 +8,7 @@ export default function EditHabit() {
   const [editItem, setEditItem] = useState();
   const router = useRouter();
   const { id } = router.query;
-  console.log('checking edit item', editItem);
+  console.warn('checking edit item', editItem);
   useEffect(() => {
     getSingleHabit(id).then((data) => setEditItem(data));
   }, []);
